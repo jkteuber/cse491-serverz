@@ -1,3 +1,11 @@
+2014-01-15  Joshua Teuber <teuberj1@msu.edu>
+
+ * Updated server.py to include:
+      - Status Line
+      - Header Content Line
+      - Content change: "Hello World & server info"
+
+
 2014-01-07  Titus Brown  <t@Titus-MacBook-Air-2.local>
 
  * Initialized repository, created server.py and README.
