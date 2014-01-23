@@ -32,9 +32,77 @@ def test_handle_connection():
     expected_return = 'HTTP/1.0 200 OK\r\n' + \
                       'Content-type: text/html\r\n' + \
                       '\r\n' + \
-                      '<h1>Hello, world.</h1>' + \
-                      'This is ctb\'s Web server.'
+                      '<html><body><center>' + \
+                      '<h1>Welcome</h1>' + \
+                      'This is jkteuber\'s Web server.<br />' + \
+                      '<a href="/content">Content Page</a><br />' + \
+                      '<a href="/image">Image Page</a><br />' + \
+                      '<a href="/file">File Page</a><br />' + \
+                      '</center></body></html>'
+    server.handle_connection(conn)
 
+    assert conn.sent == expected_return, 'Got: %s' % (repr(conn.sent),)
+
+def test_index_page():
+    conn = FakeConnection("GET / HTTP/1.0\r\n\r\n")
+    expected_return = 'HTTP/1.0 200 OK\r\n' + \
+                      'Content-type: text/html\r\n' + \
+                      '\r\n' + \
+                      '<html><body><center>' + \
+                      '<h1>Welcome</h1>' + \
+                      'This is jkteuber\'s Web server.<br />' + \
+                      '<a href="/content">Content Page</a><br />' + \
+                      '<a href="/image">Image Page</a><br />' + \
+                      '<a href="/file">File Page</a><br />' + \
+                      '</center></body></html>'
+    server.handle_connection(conn)
+
+    assert conn.sent == expected_return, 'Got: %s' % (repr(conn.sent),)
+
+def test_content_page():
+    conn = FakeConnection("GET /content HTTP/1.0\r\n")
+    expected_return = 'HTTP/1.0 200 OK\r\n' + \
+                      'Content-type: text/html\r\n' + \
+                      '\r\n' + \
+                      '<html><body><center>' + \
+                      '<h1>Welcome to the content page!</h1>' + \
+                      '</center></body></html>'
+    server.handle_connection(conn)
+
+    assert conn.sent == expected_return, 'Got: %s' % (repr(conn.sent),)
+
+def test_file_page():
+    conn = FakeConnection("GET /file HTTP/1.0\r\n")
+    expected_return = 'HTTP/1.0 200 OK\r\n' + \
+                      'Content-type: text/html\r\n' + \
+                      '\r\n' + \
+                      '<html><body><center>' + \
+                      '<h1>Welcome to the file page!</h1>' + \
+                      '</center></body></html>'
+    server.handle_connection(conn)
+
+    assert conn.sent == expected_return, 'Got: %s' % (repr(conn.sent),)
+
+def test_image_page():
+    conn = FakeConnection("GET /image HTTP/1.0\r\n")
+    expected_return = 'HTTP/1.0 200 OK\r\n' + \
+                      'Content-type: text/html\r\n' + \
+                      '\r\n' + \
+                      '<html><body><center>' + \
+                      '<h1>Welcome to the image page!</h1>' + \
+                      '</center></body></html>'
+    server.handle_connection(conn)
+
+    assert conn.sent == expected_return, 'Got: %s' % (repr(conn.sent),)
+
+def test_post_response():
+    conn = FakeConnection("POST / HTTP/1.0\r\n")
+    expected_return = 'HTTP/1.0 200 OK\r\n' + \
+                      'Content-type: text/html\r\n' + \
+                      '\r\n' + \
+                      '<html><body>' + \
+                      '<h1>You have sent a POST request</h1>' + \
+                      '</body></html>'
     server.handle_connection(conn)
 
     assert conn.sent == expected_return, 'Got: %s' % (repr(conn.sent),)

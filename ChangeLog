@@ -1,3 +1,13 @@
+2014-01-22  Joshua Teuber <teuberj1@msu.edu>
+
+ *Added testing capability
+      -test_server.py and send-post-request files
+      -testing for all functions
+ *Added file, image, and content pages to server.py
+ *Added links to other pages on index
+ *Updated content on index page
+
+
 2014-01-15  Joshua Teuber <teuberj1@msu.edu>
 
  * Updated server.py to include:
