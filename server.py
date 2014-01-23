@@ -5,7 +5,11 @@ import time
 
 s = socket.socket()         # Create a socket object
 host = socket.getfqdn() # Get local machine name
+<<<<<<< HEAD
 port = random.randint(8000,9999)
+=======
+port = random.randint(8000, 9999)
+>>>>>>> 1fd1dce640a9dfc1181cedc25d91a0eb48f2b6e0
 s.bind((host, port))        # Bind to the port
 
 print 'Starting server on', host, port
@@ -14,6 +18,7 @@ print 'The Web server URL for this would be http://%s:%d/' % (host, port)
 s.listen(5)                 # Now wait for client connection.
 
 print 'Entering infinite loop; hit CTRL-C to exit'
+<<<<<<< HEAD
 
 while True:
     print 'inside loop'
@@ -32,3 +37,12 @@ while True:
 c.close()
 
 s.close()
+=======
+while True:
+    # Establish connection with client.    
+    c, (client_host, client_port) = s.accept()
+    print 'Got connection from', client_host, client_port
+    c.send('Thank you for connecting')
+    c.send("good bye.")
+    c.close()
+>>>>>>> 1fd1dce640a9dfc1181cedc25d91a0eb48f2b6e0

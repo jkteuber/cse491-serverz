@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 2014-01-16  Jourdan West
 
  * Added in simple HTTP response for HW 1.
 
+=======
+>>>>>>> 1fd1dce640a9dfc1181cedc25d91a0eb48f2b6e0
 2014-01-07  Titus Brown  <t@Titus-MacBook-Air-2.local>
 
  * Initialized repository, created server.py and README.
