@@ -9,7 +9,7 @@ host = socket.getfqdn() # Get local machine name
 port = random.randint(8000,9999)
 port = random.randint(8000, 9999)
 
-  s.bind((host, port))        # Bind to the port
+s.bind((host, port))        # Bind to the port
 
 print 'Starting server on', host, port
 print 'The Web server URL for this would be http://%s:%d/' % (host, port)
